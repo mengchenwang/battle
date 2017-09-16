@@ -1,0 +1,123 @@
+<style>
+{ margin: 0; padding: 0; }
+
+  html {
+      background: url('images/play.png') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  }
+
+  progress[value] {
+  /* Reset the default appearance */
+    -webkit-appearance: none;
+     appearance: none;
+    width: 400px;
+    height: 20px;
+    margin: 0 20 0 20;
+  }
+
+  progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+
+  progress[value]::-webkit-progress-value {
+    background-image:
+	   -webkit-linear-gradient(-45deg,
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%,
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top,
+	                           rgba(255, 255, 255, .25),
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, hsl(120, 60%, 70%), hsl(120, 60%, 60%));
+
+    border-radius: 10px;
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+  }
+
+  .hitpoint_bar {
+    width:1200px;
+    margin:30px auto 0 auto;
+    text-align:center
+  }
+
+  h1, h2 {
+    text-align:center;
+    margin:15px auto 0 auto;
+    color:white;
+    text-shadow:2px 2px black;
+  }
+
+  .players {
+    width:900px;
+    margin:0 auto 0 auto;
+    text-align:center;
+    overflow: hidden;
+  }
+
+  .attacks {
+    width:520px;
+    margin:20px auto 0 auto;
+    overflow: hidden;
+  }
+
+  .attack_icon {
+    float:left;
+    width:130px;
+  }
+
+</style>
+
+<div class="hitpoint_bar">
+  <progress value="<%= @game.player_1.hitpoint %>" max="60"></progress>
+  <img src="images/begin.png" width="100" height="100">
+  <progress value="<%= @game.player_2.hitpoint %>" max="60"></progress>
+</div>
+
+<h1><%= @game.player_1.name %> vs. <%= @game.player_2.name %></h1>
+<h2><%= @game.current_turn.name %>'s turn</h2>
+
+<div class="players">
+  <div style="float:left; width:380px;" text-align: "center">
+    <img align="center" src="images/player_1.png" height="400">
+    <div style="margin:20px">
+      <b><%= @game.player_1.name %>: <%= @game.player_1.hitpoint %>/60HP</b>
+    </div>
+  </div>
+
+  <div style="float:right; width:380px;" text-align: "center">
+    <img align="center" src="images/player_2.png" height="400">
+    <div style="margin:20px">
+      <b><%= @game.player_2.name %>: <%= @game.player_2.hitpoint %>/60HP</b>
+    </div>
+  </div>
+</div>
+
+<div class="attacks">
+  <div class="attack_icon">
+    <form action="/attack">
+      <input type="image" title="Attack: 5-15dmg" src="images/attack.png" alt="Submit" width="110">
+    </form>
+  </div>
+
+  <div class="attack_icon">
+    <form action="/stun">
+      <input type="image" title="Stun: 3-10dmg and chance to stun" src="images/stun.png" alt="Submit" width="110">
+    </form>
+  </div>
+
+  <div class="attack_icon">
+    <form action="/poison">
+      <input type="image" title="Poison: 1-3dmg and 1-3dmg every round" src="images/poison.png" alt="Submit" width="110">
+    </form>
+  </div>
+
+  <div class="attack_icon">
+    <form action="/heal">
+      <input type="image" title="Heal: Heal self for 5-10HP" src="images/heal.png" alt="Submit" width="110">
+    </form>
+  </div>
+</div>

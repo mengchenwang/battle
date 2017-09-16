@@ -1,0 +1,64 @@
+<style>
+  html {
+      background: url('images/attack.jpg') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  }
+
+  .box {
+    width:800px;
+    border-radius:5px;
+    padding: 10px;
+    box-shadow: -5px 5px 5px rgba(8,116,171,0.7);
+    margin:80px auto auto auto;
+    display:block;
+    background: linear-gradient(to right, rgba(248,103,2,0.5) , rgba(8,116,171,0.5)); /* Standard syntax */
+  }
+
+  h1 {
+    text-align:center;
+    margin:60px auto 0 auto;
+    color:white;
+    text-shadow:4px 4px black;
+    font-size: 60px;
+    font-weight:bold;
+  }
+
+  h2 {
+    text-align:center;
+    margin:30px auto 0 auto;
+    color:white;
+    text-shadow:2px 2px black;
+    font-size: 40px;
+    font-weight:bold;
+  }
+
+  .ok_button {
+    margin:20px auto 40px auto;
+    text-align:center;
+  }
+</style>
+
+<div class="box">
+  <h1>
+    <%= @attack.attacker.name %> stabs <%= @attack.attackee.name %> with a poisoned dagger!
+  </h1>
+
+  <h2>
+    <%= @attack.attackee.name %>: -<%= @attack.attackee.damage %>HP
+    <br>
+    <%= @attack.attackee.name %> is poisoned!
+  </h2>
+
+  <% @attack.attackee.hitpoint <= 0 ? (action = "/game-over")
+                                    : (action = "/switch-turns") %>
+
+  <div class="ok_button">
+    <form action="/post_office" method="post">
+      <input type="hidden" name="page" value="<%=action%>">
+      <input type="image" title="OK" src="images/ok.png" alt="Submit" width="100">
+    </form>
+  </div>
+</div>

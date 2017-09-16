@@ -1,0 +1,65 @@
+<style>
+  html {
+      background: url('images/game_over.jpg') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  }
+
+  body {
+    margin:200px 800px 0 auto;
+    padding-left: 100px
+  }
+
+  h1 {
+    text-align:center;
+    margin:50px auto 0 auto;
+    color:white;
+    text-shadow:4px 4px black;
+    font-size: 120px;
+    font-weight:bold;
+  }
+
+  h2 {
+    text-align:center;
+    margin:15px auto 0 auto;
+    color:white;
+    text-shadow:2px 2px black;
+    font-size: 60px;
+    font-weight:bold;
+  }
+
+  .victor_name {
+    text-align:center;
+    margin:0 auto 0 auto;
+    color:white;
+    text-shadow:2px 2px black;
+    font-size: 60px;
+    font-weight:bold;
+  }
+
+  .exit_battle {
+    text-align:center;
+    margin:20 auto 0 auto;
+  }
+</style>
+
+<body>
+<h1>Victory!</h1>
+<h2>for</h2>
+
+<div class="victor_name">
+  <% if @game.current_turn.hitpoint <= 0 %>
+    <% @game.not_current_turn.name %>
+  <% else %>
+    <%= @game.current_turn.name %>
+  <% end %>
+</div>
+
+<div class="exit_battle">
+  <form action="/">
+    <input type="image" title="Exit Battle" src="images/exit.png" alt="Submit" width="100">
+  </form>
+</div>
+</body>

@@ -1,0 +1,80 @@
+<style>
+
+form.begin {
+  width:500px;
+  border-radius:5px;
+  padding: 10px;
+  box-shadow: -5px 5px 5px rgba(8,116,171,0.7);
+  margin:50px auto 0 auto;
+  display:block;
+  background: linear-gradient(to right, rgba(248,103,2,0.5) , rgba(8,116,171,0.5));
+}
+
+ form.begin h2 {
+   text-align: center;
+   color: rgba(255,255,255,255);
+ }
+
+ .input_group {
+   margin:20px 10px;
+ }
+
+.begin label {
+  text-transform: uppercase;
+  display:inline-block;
+  padding-right:5px;
+  font-weight:bold;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,255);
+}
+
+.begin input[type="text"] {
+  font-size: 15px;
+  width:60%;
+  letter-spacing: 1px;
+  padding:5px;
+  font-weight:bold;
+  background:rgba(255,255,255,0.5);
+  max-width: 330px;
+  /*set makes character length*/
+}
+
+.begin input[type="submit"] {
+  -webkit-appearance: button;
+  display:block;
+  width:40%;
+  height:50px;
+  font-size:20px;
+  margin: 30px auto;
+  background:rgba(187,187,187,0.3);
+  border-radius:10px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,255);
+}
+
+.begin input[type="submit"]:hover {
+  background:#1479CC;
+  background:rgba(20,121,204,0.3);
+  color:white;
+  text-shadow: 1px 1px #000;
+}
+
+</style>
+
+<body background="images/index.jpg" background-position: "center">
+  <center>
+    <form class="begin" action="/names" method="post">
+      <h2><img src="images/battle.png" width="420"><h2>
+      <h2>Sign in to play</h2>
+      <div class="input_group">
+        <label for="player_1_name">Player 1: </label>
+        <input type="text" name="player_1_name">
+      </div>
+      <div class="input_group">
+        <label for="player_2_name">Player 2: </label>
+        <input type="text" name="player_2_name">
+      </div>
+      <input type="submit" value="Enter the Arena!">
+    </form>
+  </center>
+</body>
