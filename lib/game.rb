@@ -16,7 +16,7 @@ class Game
   end
 
   def not_current_turn
-    opponent_of(current_turn)
+    opponent_of(@current_turn)
   end
 
   def switch_turns

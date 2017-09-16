@@ -51,7 +51,7 @@
 
 <div class="victor_name">
   <% if @game.current_turn.hitpoint <= 0 %>
-    <% @game.not_current_turn.name %>
+    <%= @game.not_current_turn.name %>
   <% else %>
     <%= @game.current_turn.name %>
   <% end %>
